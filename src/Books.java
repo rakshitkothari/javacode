@@ -1,19 +1,20 @@
 import java.util.*;
 
-class Books implements Comparator<Books> {
+// Rename this class to Book
+// and also make this class public
+
+// ideally this class should implement Comparable instead of Comparable
+class Books {
     private int pageNumber;
     private float price;
     private String author;
 
+    // getters for each of the members
+    
     public Books(int pageNumber, float price, String author) {
         this.pageNumber = pageNumber;
         this.price = price;
         this.author = author;
-    }
-
-    @Override
-    public int compare(Books o1, Books o2) {
-        return 0;
     }
 
     @Override
@@ -25,6 +26,7 @@ class Books implements Comparator<Books> {
                 '}';
     }
 
+    // put the meain method in some other class
     public static void main(String[] args) {
 
         List<Books> list = new ArrayList<>();
@@ -34,8 +36,11 @@ class Books implements Comparator<Books> {
         list.add(new Books(409, 2000, "L"));
         list.add(new Books(13, 3000, "C"));
 
+        // you could have used method reference - use getter
         Comparator<Books> b = Comparator.comparingInt(o -> o.pageNumber);
         Collections.sort(list, b);
+        
+        // you could have used streams to loop over this list
         Iterator itr = list.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
