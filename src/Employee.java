@@ -3,7 +3,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+// make this class public
 class Employee implements Comparable<Employee> {
+    
+    // make these members private
     int ID;
     int salary;
     int age;
@@ -14,6 +17,7 @@ class Employee implements Comparable<Employee> {
         this.age = age;
     }
 
+    // add @Override
     public int compareTo(Employee s) {
         return this.salary - s.salary;
     }
@@ -37,6 +41,7 @@ class Employee implements Comparable<Employee> {
         list.add(new Employee(32, 3000, 20));
 
         Collections.sort(list);
+        // use streams instead of external iterator
         Iterator itr = list.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
